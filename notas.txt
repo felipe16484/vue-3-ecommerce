@@ -1,0 +1,68 @@
+# Notas y Apuntes Generales del Curso
+
+-> Uso de Options API y Composition API:
+    
+    - Se definene como el tipo de enfoque organizacional y lógico que pasará a tener un componente:
+ 
+
+
+
+    -- Options API:
+
+    --- Estructura básica:
+
+        export default {
+            data() {
+                return {
+                    message: 'Hola, Vue.js!',
+                };
+            },
+            methods: {
+                saludar() {
+                    alert(this.message);
+                },
+            },
+        };
+
+
+
+    
+    -- Composition API:
+
+    --- Estructura básica:
+
+        export default {
+            setup() {
+                // Estado local
+                const message = ref('Hola, Vue.js!');
+
+                // Función
+                function saludar() {
+                    alert(message.value);
+                }
+
+                // Propiedad computada
+                const mensajeEnMayusculas = computed(() => message.value.toUpperCase());
+
+                // Devolver datos y funciones que se utilizan en el componente
+                return {
+                    message,
+                    saludar,
+                    mensajeEnMayusculas,
+                };
+            }
+        };
+    
+    --- Cuando se trabaja con Composition API, se debe incluir la propiedad "setup" en la etiqueta "script".
+       
+    <script setup lang="ts"> 
+    </script>
+
+    
+
+
+-> Hooks:
+
+    - Son bloques de código que podemos ejecutar a lo largo del ciclo de vida de nuestro componente.
+
+    -- mounted(): se utiliza para implementar lógica sobre el componene al momento de la creación del mismo.
