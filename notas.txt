@@ -53,10 +53,12 @@
             }
         };
     
-    --- Cuando se trabaja con Composition API, se debe incluir la propiedad "setup" en la etiqueta "script".
+    --- Cuando se trabaja con Composition API, se debe incluir la propiedad "setup" en la etiqueta "script" y el lenguaje en el que se va a trabajar en el documento "ts".
        
     <script setup lang="ts"> 
     </script>
+
+    --- Para poder modificar el valor de una variable de estado se debe colocar "nomVariable.value" para hacer referencia que se va a modificar el valor.
 
     
 

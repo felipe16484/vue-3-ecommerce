@@ -27,7 +27,7 @@
     <button @click="increase">
         Aumentar contador
     </button>
-    
+    <br><br>
     <button @click="decrease">
         Disminuir contador
     </button>
