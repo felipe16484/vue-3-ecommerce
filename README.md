@@ -1,6 +1,5 @@
 # VueJS 3 Ecommerce
 
-
 ## Entities
 
 ### Product
@@ -19,11 +18,13 @@
 ### Cart
 
 - products: `[{productId: 1, quantity: 3},{productId: 7, quantity: 5}]` 
-- 
+
 
 ## Components
 
 ### ProductCard
+
+- 
 
 ## Pages
 
