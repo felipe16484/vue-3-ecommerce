@@ -1,5 +1,9 @@
 # Notas y Apuntes Generales del Curso
 
+-> Componentes
+
+    - Estado: el estado de un componente se refiere a los datos y valores que el componente mantiene y utiliza para representar su estado interno. El estado puede incluir variables, objetos, arreglos, y cualquier otra información que afecte al comportamiento y la apariencia del componente.
+
 -> Uso de Options API y Composition API:
     
     - Se definene como el tipo de enfoque organizacional y lógico que pasará a tener un componente:
