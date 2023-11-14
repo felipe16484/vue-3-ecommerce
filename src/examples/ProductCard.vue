@@ -8,6 +8,12 @@ import type { Product } from './Product';
                 type: Object as PropType<Product>,
                 required: true
             }
+        },
+        emits:['addProduct'],
+        methods:{
+            onButtonClick(){
+                this.$emit('addProduct')
+            }
         }
     }
 
@@ -16,5 +22,8 @@ import type { Product } from './Product';
 <template>
     <p>Nombre: {{ product.name }}</p>
     <p>Precio: {{ product.price }}</p>
+    <button @click="onButtonClick">
+        Agregar al carrito
+    </button>
     <hr/>
 </template>

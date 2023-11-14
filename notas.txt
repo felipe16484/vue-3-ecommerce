@@ -4,6 +4,11 @@
 
     - Estado: el estado de un componente se refiere a los datos y valores que el componente mantiene y utiliza para representar su estado interno. El estado puede incluir variables, objetos, arreglos, y cualquier otra información que afecte al comportamiento y la apariencia del componente.
 
+-> Uso de TypeScript dentro de los componentes:
+
+    - En el ejemplo de esta aplicación, se da el caso de que se debe utilizar 'TS' dentro de un componente hijo inicialmente. Lo que se debe hacer para completar todo el correcto proceso es lo siguiente:
+        -- Definir dentro o fuera 
+
 -> Uso de Options API y Composition API:
     
     - Se definene como el tipo de enfoque organizacional y lógico que pasará a tener un componente:
@@ -28,9 +33,64 @@
             },
         };
 
+    --- Emitir y Escuchar (Emmiting & Listening) Eventos: la principal lógica de ésto es que entre componentes padres e hijos, pueden transmitirse información, pueden emitir y escuchar eventos. Este proceso se realiza inicialmente por medio del hijo, que en su "export default" debe inicialmente indicar el método que va a emitir, pero ésto hace referencia a mandarle al padre lo que quiere hacer cuando existe una interacción por parte del usuario con la interfaz del componente hijo. Se debe crear, en el export default, una propiedad 'emits' la cual dentro de un array se indica el evento que se emite y, de igual forma, otro objeto 'methods' que indicará los métodos que se ejecutarán dentro del componente hijo. Para este caso, se define un método con el cual el usuario interactuó, por ejemplo, darle click a un botón. Se define el método que va a escuchar esta interacción y dentro de él se indica que va a emitir un evento "this.$emit('addProduct')" así.
+    Posterior a ello, en el componente padre, se debe indicar "@event_name" en la etiqueta del componenete hijo que se va a escuchar un evento el cual debe tener el mismo nombre del evento que está emitiendo el mismo, e indicar dentro de él qué método se va a ejecutar y allí mismo indicar los parámetros que se le pasaran, para, finalmente, ejecutar el un método que se encuentra dentro del objeto 'methods' con la lógica necesaria para el caso.
+        -> Componente hijo:
 
+            export default {
+                props: {
+                    product: {
+                        type: Object as PropType<Product>,
+                        required: true
+                    }
+                },
+                emits:['addProduct'],
+                methods:{
+                    onButtonClick(){
+                        this.$emit('addProduct')
+                    }
+                }
+            }
+
+            <p>Nombre: {{ product.name }}</p>
+            <p>Precio: {{ product.price }}</p>
+            <button @click="onButtonClick">
+                Agregar al carrito
+            </button>
+
+        -> Componente padre:
+
+            export default {
+                components: { 
+                    ProductCard 
+                },
+                data() {
+                    return {
+                        products: <Array<Product>>[
+                            { name: "Silla", price: 67, id: 5},
+                            { name: "Monitor", price: 450, id:  8},
+                            { name: "Miocrófono", price: 555, id:  2}
+                        ]
+                    }
+                },
+                methods:{
+                    onProductAdded(productId: number){
+                        console.log('Agregar producto '+ productId);
+                    }
+                }
+            }
+
+            <ProductCard v-for="p in products" 
+                    :product="p"
+                    @addProduct="onProductAdded(p.id)"/>
 
     
+
+    
+
+
+
+
     -- Composition API:
 
     --- Estructura básica:

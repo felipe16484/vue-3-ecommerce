@@ -10,12 +10,17 @@
         data() {
             return {
                 products: <Array<Product>>[
-                    { name: "Silla", price: 67 },
-                    { name: "Monitor", price: 450 },
-                    { name: "Miocrófono" }
+                    { name: "Silla", price: 67, id: 5},
+                    { name: "Monitor", price: 450, id:  8},
+                    { name: "Miocrófono", price: 555, id:  2}
                 ]
             }
-        }    
+        },
+        methods:{
+            onProductAdded(productId: number){
+                console.log('Agregar producto '+ productId);
+            }
+        }
     }    
 
 </script>
@@ -24,7 +29,8 @@
 
     <h2>Productos con v-for:</h2>
     <ProductCard v-for="p in products" 
-                :product="p"/>
+                :product="p"
+                @addProduct="onProductAdded(p.id)"/>
 
 </template>
 
